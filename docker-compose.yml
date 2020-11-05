@@ -39,20 +39,14 @@ services:
     container_name: php
     volumes:
         - ./src:/var/www/html
-    working_dir: /var/www/html
-    command: ["composer", "install"]
+    # command: composer install --prefer-dist --no-scripts --no-autoloader
     ports:
         - "5000:5000"
     networks:
         - lumen-network
-#   composer:
-#     image: composer
-#     container_name: composer
-#     volumes:
-#         - ./src:/var/www/html
-#     working_dir: /var/www/html
-#     command: composer install
-#     depends_on:
-#         - php
-#     links:
-#         - php
+  composer:
+    image: composer
+    command: composer install
+    working_dir: /var/www/html
+    volumes: 
+        - ./src:/var/www/html

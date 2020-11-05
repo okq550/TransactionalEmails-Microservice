@@ -3,5 +3,4 @@ mysql/
 /src/.idea
 /srcHomestead.json
 /srcHomestead.yaml
-/src.env
 /src.phpunit.result.cache
