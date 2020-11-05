@@ -19,3 +19,14 @@ $router->get('/', function () use ($router) {
 
 
 $router->get('user/{id}', 'ExampleController@show');
+
+$router->post('/register', function (\Illuminate\Http\Request $request)
+{
+    // if ($request->isJson()) {
+        $data = $request->json()->all();
+    // } else {
+    //     $data = $request->all();
+    // }
+
+    dd($data{'first_name'});
+});
