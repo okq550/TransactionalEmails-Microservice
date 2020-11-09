@@ -17,16 +17,5 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-
-$router->get('user/{id}', 'ExampleController@show');
-
-$router->post('/register', function (\Illuminate\Http\Request $request)
-{
-    // if ($request->isJson()) {
-        $data = $request->json()->all();
-    // } else {
-    //     $data = $request->all();
-    // }
-
-    dd($data{'first_name'});
-});
+$router->post('register', 'SendEmailController@register');
+$router->post('forgetpassword', 'SendEmailController@forget');
