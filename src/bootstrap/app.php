@@ -107,6 +107,8 @@ $app->register(App\Providers\AppServiceProvider::class);
 |
 */
 
+$app->configure('queue');
+
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
