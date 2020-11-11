@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+// require '../vendor/autoload.php';
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Queue;
 use App\Jobs\EmailJob;
 
@@ -28,16 +29,14 @@ class SendEmailController extends Controller
     public function register(Request $request)
     {
         $data = $request->json()->all();
-        Queue::push(new EmailJob(array('operation' => 'register', 'first_name' => $data{'first_name'}, 'last_name' => $data{'last_name'}, 'email' => $data{'email'})));
-		echo "successfully push register";
-        dd($data{'first_name'});
+        Queue::push(new EmailJob(array('operation' => 'register', 'first_name' => $data{'first_name'}, 'last_name' => $data{'last_name'}, 'email' => $data{'email'}, 'priority' => 1)));
+        return response()->json(['success' => true]);
     }
 
     public function forgetPassword(Request $request)
     {
         $data = $request->json()->all();
-        Queue::push(new EmailJob(array('operation' => 'forgetPassword', 'email' => $data{'email'})));
-		echo "successfully push forget.";
-        dd($data{'first_name'});
+        Queue::push(new EmailJob(array('operation' => 'forgetPassword', 'first_name' => $data{'first_name'}, 'last_name' => $data{'last_name'}, 'email' => $data{'email'}, 'priority' => 1)));
+        return response()->json(['success' => true]);
     }
 }
