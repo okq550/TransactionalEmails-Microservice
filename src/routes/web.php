@@ -18,4 +18,4 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('register', 'SendEmailController@register');
-$router->post('forgetpassword', 'SendEmailController@forgetPassword');
+$router->post('forgetPassword', 'SendEmailController@forgetPassword');

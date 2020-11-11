@@ -29,14 +29,16 @@ class SendEmailController extends Controller
     public function register(Request $request)
     {
         $data = $request->json()->all();
-        Queue::push(new EmailJob(array('operation' => 'register', 'first_name' => $data{'first_name'}, 'last_name' => $data{'last_name'}, 'email' => $data{'email'}, 'priority' => 1)));
+        Log::info(print_r($data, true));
+        Queue::push(new EmailJob(array('operation' => 'register', 'first_name' => $data{'first_name'}, 'last_name' => $data{'last_name'}, 'email' => $data{'email'}, 'format' => $data{'format'}, 'priority' => 1)));
         return response()->json(['success' => true]);
     }
 
     public function forgetPassword(Request $request)
     {
         $data = $request->json()->all();
-        Queue::push(new EmailJob(array('operation' => 'forgetPassword', 'first_name' => $data{'first_name'}, 'last_name' => $data{'last_name'}, 'email' => $data{'email'}, 'priority' => 1)));
+        Log::info(print_r($data, true));
+        Queue::push(new EmailJob(array('operation' => 'forgetPassword', 'first_name' => $data{'first_name'}, 'last_name' => $data{'last_name'}, 'email' => $data{'email'}, 'format' => $data{'format'}, 'priority' => 1)));
         return response()->json(['success' => true]);
     }
 }

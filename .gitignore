@@ -4,3 +4,4 @@ mysql/
 /srcHomestead.json
 /srcHomestead.yaml
 /src.phpunit.result.cache
+src/.phpunit.result.cache
