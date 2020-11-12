@@ -12,3 +12,5 @@ To setup, Please follow the steps below:
 - You can find the logs under: src/storage/logs/
 - You can make the tests using: docker-compose exec php /var/www/html/vendor/bin/phpunit
 - You can also import the postman collection: https://www.getpostman.com/collections/386787cfbfdae90158d2
+
+**Please contact me to get the .env file which contains some credentails.
