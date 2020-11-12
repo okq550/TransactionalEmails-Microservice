@@ -9,6 +9,10 @@ To setup, Please follow the steps below:
 3) docker-compose exec php /var/www/html/artisan db:seed
 4) docker-compose exec php /var/www/html/artisan queue:work
 
+To use the CLI command:
+1) docker-compose exec php /var/www/html/artisan takeaway:list-channels
+2) docker-compose exec php /var/www/html/artisan takeaway:send-email
+
 - You can find the logs under: src/storage/logs/
 - You can make the tests using: docker-compose exec php /var/www/html/vendor/bin/phpunit
 - You can also import the postman collection: https://www.getpostman.com/collections/386787cfbfdae90158d2
