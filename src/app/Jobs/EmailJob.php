@@ -114,12 +114,15 @@ class EmailJob implements ShouldQueue
         $body['Messages'][0]['Subject'] = $this->data['operation'] . " - Greetings from Mailjet.";
 
         if ($this->data['format'] == 'text') {
-            $body['Messages'][0]['TextPart'] = "My first Mailjet email";
-        } else {
-            $body['Messages'][0]['HTMLPart'] = view('emails.register')->with([
+            $body['Messages'][0]['TextPart'] = view('emails.' . $this->data['format'] . '.' . $this->data['operation'])->with([
                                                                                 'firstName' => $this->data['first_name'],
                                                                                 'lastName' => $this->data['last_name']
-                                                                            ]);
+                                                                            ])->render();
+        } else {
+            $body['Messages'][0]['HTMLPart'] = view('emails.' . $this->data['format'] . '.' . $this->data['operation'])->with([
+                                                                                'firstName' => $this->data['first_name'],
+                                                                                'lastName' => $this->data['last_name']
+                                                                            ])->render();
         }
         $response = $mj->post(Resources::$Email, ['body' => $body]);
         // $response->success() && var_dump($response->getData());
@@ -158,9 +161,15 @@ class EmailJob implements ShouldQueue
         $email->addTo($this->data['email'], $this->data['first_name'] . ' ' . $this->data['last_name']);
 
         if ($this->data['format'] == 'text') {
-            $email->addContent("text/plain", "and easy to do anywhere, even with PHP");
+            $email->addContent("text/plain", view('emails.' . $this->data['format'] . '.' . $this->data['operation'])->with([
+                'firstName' => $this->data['first_name'],
+                'lastName' => $this->data['last_name']
+            ])->render());
         } else {
-            $email->addContent("text/html", "<strong>and easy to do anywhere, even with PHP</strong>");
+            $email->addContent("text/html", view('emails.' . $this->data['format'] . '.' . $this->data['operation'])->with([
+                'firstName' => $this->data['first_name'],
+                'lastName' => $this->data['last_name']
+            ])->render());
         }
 
         $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
@@ -173,7 +182,7 @@ class EmailJob implements ShouldQueue
             if ($response->statusCode() == 202) {
                 $result = 200;
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             // echo 'Caught exception: '. $e->getMessage() ."\n";
             $result = 400;
         }
