@@ -2,7 +2,10 @@
 
 Transactional email microservice - code challenge
 
-Used Lumen for this microservice for this challenge because it has all the needed functionalities such as api, queues, validations etc.
+Stack used:
+- Web server: Nginx: can work as web server as well as LB.
+- Application: Lumen Framework: for this microservice for this challenge because it has all the needed functionalities such as api, queues, validations etc.
+- DB: MySQL 5.7.
 
 Logic used in this exercise is to follow the prioroty saved in database, As as start we will send the email using the channel with priority 1, then increased by if the channel is inActive or failed in sending the email using that service.
 
