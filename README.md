@@ -17,6 +17,7 @@ To use the CLI command:
 - You can make the tests using: docker-compose exec php /var/www/html/vendor/bin/phpunit
 - You can also import the postman collection: https://www.getpostman.com/collections/386787cfbfdae90158d2
 
-**Please contact me to get the .env file which contains some credentails.
+**Feel free to change the third party credentials in .env file.
+**Play with the isActive flag to enable/disable a channel.
 
 Thanks.
