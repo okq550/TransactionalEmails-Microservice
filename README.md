@@ -11,7 +11,7 @@ Logic used in this exercise is to follow the prioroty saved in database, As as s
 
 To setup, Please follow the steps below:
 
-1) docker-compose up -d
+1) docker-compose up -d (Once the composer install all modules then continue)
 2) docker-compose exec php /var/www/html/artisan migrate
 3) docker-compose exec php /var/www/html/artisan db:seed
 4) docker-compose exec php /var/www/html/artisan queue:work
