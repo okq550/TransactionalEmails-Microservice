@@ -2,6 +2,10 @@
 
 Transactional email microservice - code challenge
 
+Used Lumen for this microservice for this challenge because it has all the needed functionalities such as api, queues, validations etc.
+
+Logic used in this exercise is to follow the prioroty saved in database, As as start we will send the email using the channel with priority 1, then increased by if the channel is inActive or failed in sending the email using that service.
+
 To setup, Please follow the steps below:
 
 1) docker-compose up -d
@@ -20,4 +24,7 @@ To use the CLI command:
 **Feel free to change the third party credentials in .env file.
 **Play with the isActive flag to enable/disable a channel.
 
+
+**NOTE: Emails sent through sendGrid are being processed for a long time in the mail service provider side. May there are some constrains which cause this.
+Please try MailJet as first.
 Thanks.

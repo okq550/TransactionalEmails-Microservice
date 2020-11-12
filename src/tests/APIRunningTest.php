@@ -22,15 +22,15 @@ class APIRunningTest extends TestCase
     }
 
     /**
-     * test if the API is running.
+     * test register send email api.
      *
      * @return void
      */
     public function testTheRegisterAPI()
     {
-        $requestPayLoad = array("reciepents" => array(
-            ['first_name' => 'Osamah', 'last_name' => 'Qawasmeh', 'email' => 'okq550@gmail.com', 'format' => 'html'], 
-            ['first_name' => 'Osamah', 'last_name' => 'Qawasmeh', 'email' => 'okq550@gmail.com', 'format' => 'text'])
+        $requestPayLoad = array("reciepents" => array( 
+                ['first_name' => 'Osamah', 'last_name' => 'Qawasmeh', 'email' => 'okq550@gmail.com', 'format' => 'text']
+            )
         );
 
         $this->json('POST', '/register', $requestPayLoad)
@@ -42,15 +42,15 @@ class APIRunningTest extends TestCase
     }
 
     /**
-     * test if the API is running.
+     * test forget password send email api.
      *
      * @return void
      */
     public function testTheForgetPasswordAPI()
     {
         $requestPayLoad = array("reciepents" => array(
-            ['first_name' => 'Osamah', 'last_name' => 'Qawasmeh', 'email' => 'okq550@gmail.com', 'format' => 'html'], 
-            ['first_name' => 'Osamah', 'last_name' => 'Qawasmeh', 'email' => 'okq550@gmail.com', 'format' => 'text'])
+                ['first_name' => 'Osamah', 'last_name' => 'Qawasmeh', 'email' => 'okq550@gmail.com', 'format' => 'html'] 
+            )
         );
 
         $this->json('POST', '/forgetPassword', $requestPayLoad)

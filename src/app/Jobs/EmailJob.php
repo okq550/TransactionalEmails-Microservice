@@ -131,7 +131,7 @@ class EmailJob implements ShouldQueue
                                                                             ])->render();
         }
         $response = $mj->post(Resources::$Email, ['body' => $body]);
-        // $response->success() && var_dump($response->getData());
+        $response->success() && var_dump($response->getData());
         $result = 400;
         if ($response->success()) {
             $result = 200;
@@ -194,14 +194,14 @@ class EmailJob implements ShouldQueue
         $result = 200;
         try {
             $response = $sendgrid->send($email);
-            // print $response->statusCode() . "\n";
+            print $response->statusCode() . "\n";
             // print_r($response->headers());
             // print $response->body() . "\n";
             if ($response->statusCode() == 202) {
                 $result = 200;
             }
         } catch (\Exception $e) {
-            // echo 'Caught exception: '. $e->getMessage() ."\n";
+            echo 'Caught exception: '. $e->getMessage() ."\n";
             $result = 400;
         }
         return $result;
