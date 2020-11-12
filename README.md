@@ -14,3 +14,5 @@ To setup, Please follow the steps below:
 - You can also import the postman collection: https://www.getpostman.com/collections/386787cfbfdae90158d2
 
 **Please contact me to get the .env file which contains some credentails.
+
+Thanks.
