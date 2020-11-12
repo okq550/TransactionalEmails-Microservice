@@ -2,5 +2,5 @@ mysql/
 src/vendor
 src/.idea
 src/.phpunit.result.cache
-src/.env
+# src/.env
 !.gitignore
