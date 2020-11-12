@@ -28,9 +28,14 @@ class APIRunningTest extends TestCase
      */
     public function testTheRegisterAPI()
     {
-        $this->json('POST', '/register', ['first_name' => 'Osamah', 'last_name' => 'Qawasmeh', 'email' => 'okq550@gmail.com', 'format' => 'html'])
-             ->seeJson([
-                'success' => true,
+        $requestPayLoad = array("reciepents" => array(
+            ['first_name' => 'Osamah', 'last_name' => 'Qawasmeh', 'email' => 'okq550@gmail.com', 'format' => 'html'], 
+            ['first_name' => 'Osamah', 'last_name' => 'Qawasmeh', 'email' => 'okq550@gmail.com', 'format' => 'text'])
+        );
+
+        $this->json('POST', '/register', $requestPayLoad)
+             ->seeJsonEquals([
+                'success' => true
              ]);
 
         $this->assertEquals(200, $this->response->status());
@@ -43,7 +48,12 @@ class APIRunningTest extends TestCase
      */
     public function testTheForgetPasswordAPI()
     {
-        $this->json('POST', '/forgetPassword', ['first_name' => 'Osama', 'last_name' => 'Khd', 'email' => 'okq550@yahoo.com', 'format' => 'text'])
+        $requestPayLoad = array("reciepents" => array(
+            ['first_name' => 'Osamah', 'last_name' => 'Qawasmeh', 'email' => 'okq550@gmail.com', 'format' => 'html'], 
+            ['first_name' => 'Osamah', 'last_name' => 'Qawasmeh', 'email' => 'okq550@gmail.com', 'format' => 'text'])
+        );
+
+        $this->json('POST', '/forgetPassword', $requestPayLoad)
              ->seeJsonEquals([
                 'success' => true,
              ]);
