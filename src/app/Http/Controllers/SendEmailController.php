@@ -21,9 +21,9 @@ class SendEmailController extends Controller
     }
 
     /**
-     * Retrieve the user for the given ID.
+     * Register
      *
-     * @param  int  $id
+     * @param  reciepent object
      * @return Response
      */
     public function register(Request $request)
@@ -37,6 +37,12 @@ class SendEmailController extends Controller
         return response()->json(['success' => true]);
     }
 
+    /**
+     * Forget password
+     *
+     * @param  reciepent object
+     * @return Response
+     */
     public function forgetPassword(Request $request)
     {
         $data = $request->json()->all();

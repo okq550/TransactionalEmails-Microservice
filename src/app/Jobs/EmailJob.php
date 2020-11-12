@@ -23,7 +23,7 @@ class EmailJob implements ShouldQueue
     /**
      * Create a new job instance.
      *
-    //  * @param  Podcast  $podcast
+    //  * @param  user data
      * @return void
      */
     public function __construct($data)
@@ -36,7 +36,7 @@ class EmailJob implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @param  AudioProcessor  $processor
+     * 
      * @return void
      */
     public function handle()
@@ -76,10 +76,10 @@ class EmailJob implements ShouldQueue
     }
 
     /**
-     * Execute the job.
+     * Send the email.
      *
-     * @param  AudioProcessor  $processor
-     * @return void
+     * @param  Channel name
+     * @return response code
      */
     public function sendEmail($channelName)
     {
@@ -90,9 +90,15 @@ class EmailJob implements ShouldQueue
         return $result;
     }
 
+    /**
+     * MailJet
+     *
+     * 
+     * @return response code
+     */
     public function MailJet()
     {
-        $mj = new \Mailjet\Client(getenv('MAILJET_API_KEY_1'), getenv('MAILJET_API_KEY_2'), true, ['version' => getenv('MAILJET_API_VERSION')]);
+        $mj = new \Mailjet\Client(getenv('MAILJET_API_PUBLIC_KEY'), getenv('MAILJET_API_SECRET_KEY'), true, ['version' => getenv('MAILJET_API_VERSION')]);
         $body = [
             'Messages' => [
                 [
@@ -133,6 +139,12 @@ class EmailJob implements ShouldQueue
         return $result;
     }
 
+    /**
+     * MailGun
+     *
+     * 
+     * @return response code
+     */
     public function MailGun()
     {
         // # Instantiate the client.
@@ -153,6 +165,12 @@ class EmailJob implements ShouldQueue
         return $result;
     }
 
+    /**
+     * SendGrid
+     *
+     * 
+     * @return response code
+     */
     public function SendGrid()
     {
         $email = new \SendGrid\Mail\Mail();
