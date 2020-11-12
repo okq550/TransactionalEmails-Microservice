@@ -5,4 +5,4 @@ mysql/
 /srcHomestead.yaml
 /src.phpunit.result.cache
 src/.phpunit.result.cache
-.env
+src/.env
