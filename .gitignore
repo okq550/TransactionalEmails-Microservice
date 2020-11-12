@@ -1,7 +1,5 @@
 mysql/
 src/vendor
 src/.idea
-src/Homestead.json
-src/Homestead.yaml
-src/.env
 src/.phpunit.result.cache
+src/.env
