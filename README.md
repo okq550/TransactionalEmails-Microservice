@@ -31,3 +31,10 @@ To use the CLI command:
 **NOTE: Emails sent through sendGrid are being processed for a long time in the mail service provider side. May there are some constrains which cause this.
 Please try MailJet as first.
 Thanks.
+
+#TODO (Enhancements):
+1) Handling multi locales for emails content.
+2) Trying the to send the email using the same provider multiple times before moving on to the next provider.
+3) Triggering some events to main events stram to ping about that email sending status.
+4) Adding failure counts/logs to monitor the providers services and take any needed action.
+5) Adding an admin tool to add/edit the templates emails or adding a new action (Order places, purchase notifications, etc...) which can use this micro-service.
